@@ -5,7 +5,7 @@ export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 
 #set -x
 
-MAIN_FOLDER="/path/to/somefolder"	# folder with photo albums
+SOURCE_FOLDER="/path/to/somefolder"	# folder with photo albums
 LOG_FILE="/tmp/convert_files.log"
 
 rm "$LOG_FILE" > /dev/null 2>&1
