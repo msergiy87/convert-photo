@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -x
+#!/usr/bin/env bash # -x
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 
 # convert and replace files
@@ -19,9 +19,11 @@ rm /tmp/cm_convert.log > /dev/null 2>&1
 recode () {
 	INPUT_DIR="$1"
 
-	echo "-------------------------" >> "$LOG_FILE"
-	echo "START PROCESS DIRECTORY" >> "$LOG_FILE"
-	echo "$INPUT_DIR" >> "$LOG_FILE"
+	{
+		echo "-------------------------"
+		echo "START PROCESS DIRECTORY"
+		echo "$INPUT_DIR"
+	} >> "$LOG_FILE"
 
 	# Create list of files that should process
 	find "$INPUT_DIR"/*.tif -maxdepth 0 -type f > /tmp/cm_processing_list_files
@@ -51,7 +53,7 @@ recode () {
 }
 
 # Find all nesting dirs and process it
-find "$MAIN_FOLDER" -mindepth 1 -type d > /tmp/cm_list_all_albums
+find "$SOURCE_FOLDER" -mindepth 1 -type d > /tmp/cm_list_all_albums
 
 while read -r ALB_DIR
 do
