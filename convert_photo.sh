@@ -30,17 +30,13 @@ recode () {
 		echo "FILES IN DIR:" >> "$LOG_FILE"
 		cat /tmp/cm_processing_list_files >> "$LOG_FILE"
 
-#		ORDER_NUM="1"
-
 		while read -r PHOTO_FILE
 		do
 			echo "Start CONVERT files" >> "$LOG_FILE"
 			echo "$PHOTO_FILE" >> "$LOG_FILE"
-#			echo "$INPUT_DIR"/"$ORDER_NUM".mp3 >> "$LOG_FILE"
 
 			convert "$PHOTO_FILE" -set filename: "%t" "$INPUT_DIR"/%[filename:].jpg > /tmp/cm_convert.log 2>&1
 			rm "$PHOTO_FILE"
-#			ORDER_NUM=$(( ORDER_NUM + 1 ))
 
 		done < /tmp/cm_processing_list_files
 
