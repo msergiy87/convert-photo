@@ -3,6 +3,7 @@
 Task
 ------------
 Create script to convert photo (.tif files) to .jpg files.
+
 ATTENTION, script will REPLACE .tiff files !!!
 
 Requirements
