@@ -1,9 +1,8 @@
-#!/usr/bin/env bash # -x
+#!/bin/bash
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH
 
 # convert and replace files
 
-set -e
 #set -x
 
 SOURCE_FOLDER="/path/to/somefolder"	# folder with photo albums
