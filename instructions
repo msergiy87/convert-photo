@@ -1,0 +1,46 @@
+#!/usr/bin/env bash -x
+set -e
+
+========================================
+
+convert -depth 8 image.tif image.ppm
+
+mogrify -format jpg *.tif
+
+for /f "delims=." %x in ('dir /b *.tiff') do img2img "%x.tiff" "%x.jpeg"
+
+convert -separate image1 image2
+
+convert File.tif File.jpg
+
+for f in *.tif; do  echo "Converting $f"; convert "$f"  "$(basename "$f" .tif).jpg"; done
+
+
+for f in *.jpg; do
+  convert ./"$f" ./"${f%.jpg}.pdf"
+done
+
+You can use the mogrify command for this. Normally, it modifies files in-place, but when converting formats, it writes a new file (just changing the extension to match the new format). Thus:
+
+mogrify -format pdf -- *.jpg
+(Like enzotib's ./*.jpg, the -- prevents any strange filenames from being interpreted as switches. Most commands recognize -- to mean "stop looking for options at this point".)
+
+
+find /path/to/files -iname '*.jpg' -exec mogrify -format pdf {} +
+
+
+convert -resize 50% input.jpg output.png
+
+
+convert *.tiff -set filename: "%t" %[filename:].jpg
+
+mkdir jpg
+convert *.tiff -set filename: "%t" jpg/%[filename:].jpg
+
+
+
+https://www.godaddy.com/garage/tech/config/how-to-bulk-convert-images-using-imagemagick/
+
+http://unix.stackexchange.com/questions/29869/converting-multiple-image-files-from-jpeg-to-pdf-format
+
+http://askubuntu.com/questions/60401/batch-processing-tif-images-converting-tif-to-jpeg
