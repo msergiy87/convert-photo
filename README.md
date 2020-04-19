@@ -10,6 +10,8 @@ Requirements
 ------------
 - convert
 
+'''sudo apt-get install imagemagick'''
+
 Distros tested
 ------------
 
